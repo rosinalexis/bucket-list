@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class WishController extends AbstractController
 {
     /**
-     * @Route("/wish", name="app_wish")
+     * @Route("/wish", name="app_wish",methods={"GET"})
      */
     public function index(WishRepository $repo): Response
     {
@@ -21,7 +21,7 @@ class WishController extends AbstractController
     }
 
     /**
-     * @Route("/wish/ajouter", name="app_wish_ajouter")
+     * @Route("/wish/ajouter", name="app_wish_ajouter",methods={"GET","POST"})
      */
     public function ajouter( EntityManagerInterface $em): Response
     {
@@ -30,7 +30,7 @@ class WishController extends AbstractController
         ->setDescription('description de test')
         ->setAuthor('testeur')
         ->setIsPublished(1)
-        ->setDateCreated(new \DateTimeImmutable);
+        ->setDateCreated(new \DateTimeImmutable());
        
         $em->persist($wish); 
         $em->flush($wish);
@@ -38,8 +38,8 @@ class WishController extends AbstractController
         return $this->redirectToRoute('app_wish');
     }
 
-        /**
-     * @Route("/wish/{id<[0-9]+>}", name="app_wish_afficher")
+    /**
+     * @Route("/wish/{id<[0-9]+>}", name="app_wish_afficher",methods={"GET"})
      */
     public function afficher(Wish $wish): Response
     {

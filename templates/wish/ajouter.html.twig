@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bucket|Wish ajouter
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center pt-5 pb-3">#Demo## Ajouter une wish</h1>
+
+	{{ form_start(formWish) }}
+
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+			{{ form_row(formWish.title) }}
+			{{ form_row(formWish.description) }}
+			{{ form_row(formWish.author) }}
+			{{ form_row(formWish.isPublished) }}
+			{{ form_row(formWish.dateCreated) }}
+		</div>
+	</div>
+
+
+	<div class="d-grid gap-2 col-6 mx-auto my-3">
+		<button class="btn btn-primary" type="submit">Envoyer</button>
+	</div>
+	{{ form_end(formWish) }}
+
+
+{% endblock %}

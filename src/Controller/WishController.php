@@ -24,7 +24,7 @@ class WishController extends AbstractController
 
     /**
      * @Route("/wish/ajouter", name="app_wish_ajouter",methods={"GET","POST"})
-     * @Route("/wish/modifier/{id<[0-9]+>}", name="app_wish_modifier",methods={"GET","POST"})
+     * @Route("admin/wish/modifier/{id<[0-9]+>}", name="app_wish_modifier",methods={"GET","POST"})
      * 
      */
     public function traitement(Wish $wish =null,EntityManagerInterface $em,Request $request): Response
@@ -61,12 +61,48 @@ class WishController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/wish/{id<[0-9]+>}", name="app_wish_afficher",methods={"GET"})
+     * @Route("admin/wish/ajoute", name="app_wish_ajouter_rapide",methods={"POST"})
+     * 
+     */
+    public function ajouterRapide(EntityManagerInterface $em,Request $request): Response
+    {
+        $titre =$request->request->get('titre');
+
+        $wish = new Wish(); 
+
+        $wish->setTitle($titre); 
+
+        //valeur par defaut
+        $wish->setAuthor('admin'); 
+        $wish->setIsPublished(true); 
+        $wish->setDateCreated(new \DateTimeImmutable());
+        
+        $em->persist($wish); 
+        $em->flush();
+        return $this->redirectToRoute('app_wish');
+    }
+
+
+    /**
+     * @Route("/wish/afficher/{id<[0-9]+>}", name="app_wish_afficher",methods={"GET"})
      */
     public function afficher(Wish $wish): Response
     {
         return $this->render('wish/afficher.html.twig', compact('wish'));
     }
+
+    
+    /**
+     * @Route("admin/wish/supprimer/{id<[0-9]+>}", name="app_wish_supprimer",methods={"GET","POST"})
+     */
+    public function supprimer(Wish $wish,EntityManagerInterface $em): Response
+    {
+        $em->remove($wish); 
+        $em->flush();
+        return $this->redirectToRoute('app_wish');   
+    }
+
 
 }

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bucket list admin
+{% endblock %}
+
+{% block body %}
+
+
+	<h1 class="text-center text-dark my-5 text-uppercase">
+		TP Bucket-List | Admin zone</h1>
+
+	<div>
+		<form action="{{path('app_wish_ajouter_rapide')}}" method="POST">
+			<div class="mb-3 col-md-6 mx-auto">
+				<label for="titre" class="form-label">Ajouter une wish rapide:</label>
+				<input type="text" class="form-control" id="titre" placeholder="Titre de la wish" name='titre'>
+				<button type="submit" class="btn btn-primary my-4 mx-auto">Ajout une wish</button>
+			</div>
+		</form>
+	</div>
+
+{% endblock %}

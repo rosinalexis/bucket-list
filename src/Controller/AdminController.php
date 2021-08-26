@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\WishRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,9 +15,10 @@ class AdminController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(WishRepository $repo): Response
     {
-        return $this->render('admin/index.html.twig');
+        $wishes = $repo->findBy(['isPublished'=>true],['dateCreated'=>'DESC']);
+        return $this->render('admin/index.html.twig',compact('wishes'));
     }
 
      

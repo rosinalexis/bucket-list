@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Wish;
 use App\Form\WishType;
+use App\Repository\CategoryRepository;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -66,22 +68,24 @@ class WishController extends AbstractController
      * @Route("admin/wish/ajoute", name="app_wish_ajouter_rapide",methods={"POST"})
      * 
      */
-    public function ajouterRapide(EntityManagerInterface $em,Request $request): Response
+    public function ajouterRapide(EntityManagerInterface $em,CategoryRepository $catRepo,Request $request): Response
     {
         $titre =$request->request->get('titre');
 
         $wish = new Wish(); 
-
-        $wish->setTitle($titre); 
+        $category = new Category(); 
+        $category =$catRepo->findOneBy(['id'=>'5']);
 
         //valeur par defaut
+        $wish->setTitle($titre);
+        $wish->setCategory($category);
         $wish->setAuthor('admin'); 
         $wish->setIsPublished(true); 
         $wish->setDateCreated(new \DateTimeImmutable());
         
         $em->persist($wish); 
         $em->flush();
-        return $this->redirectToRoute('app_wish');
+        return $this->redirectToRoute('admin_home');
     }
 
 
@@ -101,7 +105,7 @@ class WishController extends AbstractController
     {
         $em->remove($wish); 
         $em->flush();
-        return $this->redirectToRoute('app_wish');   
+        return $this->redirectToRoute('admin_home');
     }
 
 

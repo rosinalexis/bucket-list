@@ -16,6 +16,7 @@ class WishType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('author')
+            ->add('category',null,['choice_label'=> 'name'])
             // ->add('isPublished')
             // ->add('dateCreated',null,[ 'widget' => 'single_text'])
             ->add('majeur',CheckboxType::class,

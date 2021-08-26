@@ -24,27 +24,41 @@ class WishController extends AbstractController
 
     /**
      * @Route("/wish/ajouter", name="app_wish_ajouter",methods={"GET","POST"})
+     * @Route("/wish/modifier/{id<[0-9]+>}", name="app_wish_modifier",methods={"GET","POST"})
+     * 
      */
-    public function ajouter( EntityManagerInterface $em,Request $request): Response
+    public function traitement(Wish $wish =null,EntityManagerInterface $em,Request $request): Response
     {
-        $wish = new Wish(); 
-
+        if($wish ==null){
+            $wish = new Wish(); 
+        }
         $formWish =  $this->createForm(WishType::class, $wish); 
 
         $formWish->handleRequest($request);
 
         if($formWish->isSubmitted() && $formWish->isValid()){
-
-            $em->persist($wish); 
-            $em->flush($wish);
-
+           
+            if($wish->getId() ==null)
+            {
+                $wish->setIsPublished(true); 
+                $wish->setDateCreated(new \DateTimeImmutable());
+                
+                if($formWish->get('majeur')->getData() == true){
+                    $em->persist($wish); 
+                    $em->flush();
+                }
+            }
+            else{
+                $em->persist($wish); 
+                $em->flush();
+            }
             return $this->redirectToRoute('app_wish');
         }
 
-        return $this->render('wish/ajouter.html.twig', [
+        return $this->render('wish/traitement.html.twig', [
             'formWish'=> $formWish->createView(),
+            'editMode'=>$wish->getId() !==null
         ]);
-
     }
 
     /**

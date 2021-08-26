@@ -16,21 +16,6 @@ class MainController extends AbstractController
         return $this->render('main/home.html.twig');
     }
 
-    /**
-     * @Route("/main", name="app_main")
-     */
-    public function index(): Response
-    {
-        $personnes[0]["nom"] = "Willis";
-        $personnes[0]["prenom"] = "Bruce";
-        $personnes[1]["nom"] = "PITT";
-        $personnes[1]["prenom"] = "Brad";
-        $personnes[2]["nom"] = "CRUISE";
-        $personnes[2]["prenom"] = "Tom";
-
-        return $this->render('main/index.html.twig',
-    ['personnes' =>$personnes]);
-    }
 
     /**
      * @Route("/dino", name="app_dino")

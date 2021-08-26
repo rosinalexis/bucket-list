@@ -16,6 +16,7 @@
 						<th>Description</th>
 						<th>Date de creation</th>
 						<th>Afficher</th>
+						<th>Modifier</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -27,6 +28,9 @@
 							<td>{{wish.dateCreated|date('Y/m/d')}}</td>
 							<td>
 								<a href="{{path('app_wish_afficher',{id:wish.id})}}">Afficher</a>
+							</td>
+							<td>
+								<a href="{{path('app_wish_modifier',{id:wish.id})}}">Modifier</a>
 							</td>
 						</tr>
 					{% endfor %}

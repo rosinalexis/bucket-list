@@ -1,5 +1,7 @@
-# Liste de Personnes
+# Version Web site de Bucket-list
 
-- création entity Personne
-- Repo : afficher toutes les personnes
-- Entity Manager : ajouter une personne
+- création entity Wish
+- Repo : afficher toutes les Wishes
+- Entity Manager : ajouter une Wish
+
+- lien vers la maquette en ligne sur le dépot git : https://rosinalexis.github.io/tp_symfony_rosin_andrianasy/

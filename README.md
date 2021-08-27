@@ -4,4 +4,4 @@
 - Repo : afficher toutes les Wishes
 - Entity Manager : ajouter une Wish
 
-- lien vers la maquette en ligne sur le dépot git : https://rosinalexis.github.io/tp_symfony_rosin_andrianasy/
+- lien vers la maquette en ligne sur le dépot git : https://rosinalexis.github.io/bucket-list/

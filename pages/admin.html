@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="../images/atome.png" />
+
+    <title>
+        Bucket list admin
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light px-5 ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="../images/atome.png" width="100px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ms-auto me-5">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./wish.html">Wishes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./admin.html">About us</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <h1 class="text-center text-dark my-5 text-uppercase">
+            TP Bucket-List | Admin zone</h1>
+
+
+        <h1 class="text-center pt-5 pb-3">#Demo## Mon tableau de wishes</h1>
+
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <table class="table">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Categorie</th>
+                            <th>Date de creation</th>
+                            <th>Afficher</th>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4</td>
+                            <td>test</td>
+                            <td>description de test</td>
+                            <td>Sport</td>
+                            <td>2021/08/25</td>
+                            <td>
+                                <a href="#" class="btn btn-primary">Afficher</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-warning">Modifier</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger">Supprimer</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>test</td>
+                            <td>description de test</td>
+                            <td>Entertainment</td>
+                            <td>2021/08/25</td>
+                            <td>
+                                <a href="#" class="btn btn-primary">Afficher</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-warning">Modifier</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger">Supprimer</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>test</td>
+                            <td>description de test</td>
+                            <td>Human Relations</td>
+                            <td>2021/08/25</td>
+                            <td>
+                                <a href="#" class="btn btn-primary">Affic>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-warning">Modifier</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger">Supprimer</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>test</td>
+                            <td>description de test</td>
+                            <td>Travel &amp; Adventure</td>
+                            <td>2021/08/25</td>
+                            <td>
+                                <a href="#" class="btn btn-primary">Afficher</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-warning">Modifier</a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger">Supprimer</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <form action="/admin/wish/ajoute" method="POST">
+                <div class="row">
+                    <div class="mb-3 col-md-10 mx-auto">
+                        <label for="titre" class="form-label">Ajouter une wish rapide:</label>
+                        <input type="text" class="form-control" id="titre" placeholder="Titre de la wish" name='titre'>
+                        <button type="submit" class="btn btn-primary my-4 mx-auto">Ajout une wish</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+        <div class="container text-center">
+            <span class="fw-bolder">©Bucket-List
+                2021</span>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -12,25 +12,45 @@
 				{% set route = app.request.attributes.get('_route') %}
 
 				<ul class="navbar-nav ms-auto me-5">
+
+
 					<li class="nav-item">
 						<a class="nav-link {{ checkRoute('app_home',route)  }} " aria-current="page" href="{{path('app_home')}}">Accueil</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link {{ route == 'app_wish' ? 'active': ' '  }}" href="{{path('app_wish')}}">Wishes</a>
-					</li>
-
-					<li class="nav-item">
-						<a class="nav-link {{ route == 'app_category_home' ? 'active': ' '  }}" href="{{path('app_category_home')}}">Categories</a>
-					</li>
-
 
 					<li class="nav-item">
 						<a class="nav-link {{ route == 'app_about' ? 'active': ' '  }}" href="{{path('app_about')}}">About us</a>
 					</li>
 
-					<li class="nav-item">
-						<a class="nav-link {{ route == 'admin_home' ? 'active': ' '  }}" href="{{path('admin_home')}}">Admin</a>
-					</li>
+					{% if app.user %}
+						<li class="nav-item">
+							<a class="nav-link {{ route == 'app_category_home' ? 'active': ' '  }}" href="{{path('app_category_home')}}">Categories</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link {{ route == 'app_wish' ? 'active': ' '  }}" href="{{path('app_wish')}}">Wishes</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link {{ route == 'admin_home' ? 'active': ' '  }}" href="{{path('admin_home')}}">Admin</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="btn btn-dark" href="{{path('app_logout')}}">Logout [{{app.user.pseudo}}]</a>
+						</li>
+
+					{% else %}
+
+						<li class="nav-item">
+							<a class="nav-link {{ route == 'app_register' ? 'active': ' '  }}" href="{{path('app_register')}}">Register</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link {{ route == 'app_login' ? 'active': ' '  }}" href="{{path('app_login')}}">Login</a>
+						</li>
+
+
+					{% endif %}
 
 				</ul>
 			</div>

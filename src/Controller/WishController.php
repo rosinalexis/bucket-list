@@ -33,6 +33,7 @@ class WishController extends AbstractController
     {
         if($wish ==null){
             $wish = new Wish(); 
+            
         }
         $formWish =  $this->createForm(WishType::class, $wish); 
 
@@ -70,6 +71,8 @@ class WishController extends AbstractController
      */
     public function ajouterRapide(EntityManagerInterface $em,CategoryRepository $catRepo,Request $request): Response
     {
+        $user =$this->getUser()->getPseudo();
+        
         $titre =$request->request->get('titre');
 
         $wish = new Wish(); 
@@ -79,7 +82,7 @@ class WishController extends AbstractController
         //valeur par defaut
         $wish->setTitle($titre);
         $wish->setCategory($category);
-        $wish->setAuthor('admin'); 
+        $wish->setAuthor($user); 
         $wish->setIsPublished(true); 
         $wish->setDateCreated(new \DateTimeImmutable());
         

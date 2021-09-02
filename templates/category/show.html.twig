@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bucket|category
+	{{category.id}}
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center pt-5 pb-3">#Demo## category n°
+		{{ category.id}}
+	</h1>
+
+	<div class="card col-md-6 mx-auto">
+		<div class="card-header">
+			{{category.name}}
+		</div>
+		<div class="card-body">
+			<blockquote class="blockquote mb-0">
+            {% for w in category.wishes %}
+            <p>
+                <span class="badge bg-primary">{{w.title}} |</span>
+            </p>
+            {% endfor %}
+			</blockquote>
+		</div>
+	</div>
+
+	<a href="{{path('app_wish')}}" class="text-center">la liste des wishes</a>
+{% endblock %}

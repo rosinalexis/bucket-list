@@ -16,14 +16,6 @@ class MainController extends AbstractController
         return $this->render('main/home.html.twig');
     }
 
-    /**
-     * @Route("/dino", name="app_dino")
-     */
-    public function dino(): Response
-    {
-        return $this->render('main/dino.html.twig');
-    }
-
 
     /**
      * @Route("/about", name="app_about")

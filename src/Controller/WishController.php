@@ -74,7 +74,7 @@ class WishController extends AbstractController
 
         $wish = new Wish(); 
         $category = new Category(); 
-        $category =$catRepo->findOneBy(['id'=>'5']);
+        $category =$catRepo->findOneBy(['id'=>'1']);
 
         //valeur par defaut
         $wish->setTitle($titre);

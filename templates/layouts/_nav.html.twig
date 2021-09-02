@@ -30,10 +30,12 @@
 						<li class="nav-item">
 							<a class="nav-link {{ route == 'app_wish' ? 'active': ' '  }}" href="{{path('app_wish')}}">Wishes</a>
 						</li>
-
-						<li class="nav-item">
-							<a class="nav-link {{ route == 'admin_home' ? 'active': ' '  }}" href="{{path('admin_home')}}">Admin</a>
-						</li>
+						
+						{%  if is_granted("ROLE_ADMIN") %}
+							<li class="nav-item">
+								<a class="nav-link {{ route == 'admin_home' ? 'active': ' '  }}" href="{{path('admin_home')}}">Admin</a>
+							</li>
+						{% endif %}
 
 						<li class="nav-item">
 							<a class="btn btn-dark" href="{{path('app_logout')}}">Logout [{{app.user.pseudo}}]</a>
